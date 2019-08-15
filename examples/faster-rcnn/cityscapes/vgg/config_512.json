@@ -1,0 +1,53 @@
+{
+    "shared": {
+        "gan_model_flag": 2,
+        "scales": [512],
+        "max_size": 1024,
+        "anchor_scales": [2, 4, 8, 16, 32],
+        "anchor_ratios": [0.5, 1, 2],
+        "anchor_stride": 16,
+        "bbox_normalize_stats_precomputed": true,
+        "bbox_normalize_stds": [0.1, 0.1, 0.2, 0.2],
+        "bbox_normalize_means": [0, 0, 0, 0],
+        "num_classes": 9,
+        "class_names":[
+            "__background__",
+            "person", "rider", "car", "truck",
+            "bus", "train", "motorcycle", "bicycle"],
+	    "roi_align": false
+    },
+    "train_anchor_target_cfg": {
+        "rpn_batch_size": 256,
+        "nms_iou_thresh": 0.7,
+        "positive_iou_thresh": 0.7,
+        "negative_iou_thresh": 0.3,
+        "positive_percent": 0.5,
+        "ignore_iou_thresh": 0.5
+    },
+    "train_rpn_proposal_cfg": {
+        "nms_iou_thresh": 0.7,
+        "pre_nms_top_n": 12000,
+        "post_nms_top_n": 2000,
+        "roi_min_size": 2
+    },
+    "train_proposal_target_cfg": {
+        "batch_size": 512,
+        "positive_iou_thresh": 0.5,
+        "negative_iou_thresh_hi": 0.5,
+        "negative_iou_thresh_lo": 0.0,
+        "ignore_iou_thresh": 0.5,
+        "positive_percent": 0.25,
+        "append_gts": true
+    },
+    "test_rpn_proposal_cfg": {
+        "nms_iou_thresh": 0.7,
+        "pre_nms_top_n": 6000,
+        "post_nms_top_n": 300,
+        "roi_min_size": 2
+    },
+    "test_predict_bbox_cfg": {
+        "nms_iou_thresh": 0.5,
+        "score_thresh": 0.00,
+        "top_n": 100
+    }
+}
